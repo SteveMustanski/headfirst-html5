@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+
+    <script>
+
+      function movie(title, genre, rating, showtimes) {
+        this.title = title;
+        this.genre = genre;
+        this.rating = rating;
+        this.showtimes = showtimes;
+        this.getNextShowing = function () {
+          var now = new Date().getTime();
+
+          for (var i = 0; i < this.showtimes.length; i++) {
+            var showTime = getTimeFromString(this.showtimes[i]);
+            if ((showTime - now) > 0) {
+              return "The next showing of " + this.title + " is " + this.showtimes[i];
+            }
+          }
+          return null;
+        }
+
+      }
+
+      var movie1 = new movie("Plan 9 from Outer Space", "cult-classic", 5, ["3:00pm", "7:00pm", "11:00pm"]);
+
+
+      var movie2 = new movie("Forbidden Planet", "Classic sci-fi", 5, ["5:00pm", "9:00pm"]);
+
+
+      function getTimeFromString(str) {
+        var theTime = new Date();
+        var time = str.match(/(\d+)(?::(\d\d))?\s*(p?)/);
+        theTime.setHours(parseInt(time[1]) + (time[3] ? 12 : 0));
+        theTime.setMinutes(parseInt(time[2]) || 0);
+        return theTime.getTime();
+      }
+
+      var movieTime = movie1.getNextShowing();
+      alert(movieTime);
+      var movieTime = movie2.getNextShowing();
+      alert(movieTime);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
