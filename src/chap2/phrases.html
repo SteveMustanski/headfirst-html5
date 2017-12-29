@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phrases</title>
+
+    <script>
+      function makePhrases() {
+
+
+        var words1 = ["24/7", "responsive", "turn-key", "customer focused", "open source"];
+        var words2 = ["mobile", "cloud", "oriented", "focused", "aligned"];
+        var words3 = ["experience", "solution", "engagement", "strategy", "vision"];
+
+        var word1 = Math.floor(Math.random() * words1.length);
+        var word2 = Math.floor(Math.random() * words2.length);
+        var word3 = Math.floor(Math.random() * words3.length);
+
+        var phrase = "what we need is a " + words1[word1] + " " + words2[word2] + " " + words3[word3] + ".";
+
+        var phraseElement = document.getElementById("phrase");
+        phraseElement.innerHTML = phrase;
+      }
+
+      window.onload = makePhrases;
+    </script>
+</head>
+<body>
+
+<h1>New Phrase-o-matic</h1>
+<h3 id="phrase"></h3>
+
+</body>
+</html>
