@@ -25,6 +25,8 @@ function displayLocation(position) {
 
   var distance = document.getElementById("distance");
   distance.innerHTML = "You are " + km + " km from wickedly smart HQ";
+
+  showMap(position.coords);
 }
 
 function displayError(error) {
@@ -62,4 +64,24 @@ function computeDistance(startCoords, destCoords) {
 function degreesToRadians(degrees) {
 	radians = (degrees * Math.PI)/180;
 	return radians;
+}
+
+// google maps code
+
+//var googleLatAndLong = new google.maps.LatLng(latitude, longitude);
+
+var map;
+
+function showMap(coords) {
+  var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+
+  var mapOptions = {
+    zoom: 16,
+    center: googleLatAndLong,
+    mapTypeID: google.maps.MapTypeId.ROADMAP
+  };
+
+  var mapDiv = document.getElementById("map");
+  map = new google.maps.Map(mapDiv, mapOptions);
+  
 }
