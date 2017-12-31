@@ -17,6 +17,10 @@ function previewHandler() {
     for (var squares = 0; squares < 20; squares++) {
       drawSquare(canvas, context);
     }
+  } else if (shape == "circles") {
+    for (var squares = 0; squares < 20; squares++) {
+      drawCircle(canvas, context);
+    }
   }
 }
 
@@ -29,11 +33,27 @@ function drawSquare(canvas, context) {
   context.fillRect(x, y, w, w);
 }
 
+function drawCircle(canvas, context) {
+  var radius = Math.floor(Math.random() * 40);
+  var x = Math.floor(Math.random() * canvas.width);
+  var y = Math.floor(Math.random() * canvas.height);
+
+  context.beginPath();
+  context.arc(x, y, radius, 0, degreesToRadians(360), true);
+  context.fillStyle = "lightblue";
+  context.fill();
+}
+
 function fillBackgroundColor(canvas, context) {
-  var selectObject  = document.getElementById("backgroundColor");
+  var selectObject = document.getElementById("backgroundColor");
   var index = selectObject.selectedIndex;
   var bgColor = selectObject[index].value;
 
   context.fillStyle = bgColor;
   context.fillRect(0, 0, 600, 200);
+}
+
+//this will convert degrees to radians for the arc method.  360 gives a circle.
+function degreesToRadians(degress) {
+  return (degress * Math.PI)/180;
 }
