@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Look what I drew</title>
+    <style>
+        #tshirtcanvas {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+
+      window.onload = function () {
+        var canvas = document.getElementById("tshirtcanvas");
+        if (canvas.getContext) {
+          var context = canvas.getContext("2d");
+          context.fillRect(10, 10, 100, 100);
+        } else {
+          alert("You need to upgrade your browswer");
+        }
+      }
+    </script>
+</head>
+<body>
+
+<canvas id="tshirtcanvas" width="600" height="200"></canvas>
+
+</body>
+</html>
