@@ -57,3 +57,17 @@ function fillBackgroundColor(canvas, context) {
 function degreesToRadians(degress) {
   return (degress * Math.PI)/180;
 }
+
+function updateTweets(tweets) {
+  var tweetsSelection = document.getElementById("tweets");
+
+  for (var i = 0; i < tweets.length; i++) {
+    tweet = tweets[i];
+    var option = document.createElement("option");
+    option.text = tweet.text;
+    option.value = tweet.text.replace("\"", "'");
+
+    tweetsSelection.options.add(option);
+  }
+  tweetsSelection.index = 0;
+}
